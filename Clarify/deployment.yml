@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: clarify
+  labels:
+    app: clarify-backend
+spec: 
+  replicas: 1
+  selector:
+    matchLabels:
+      app: clarify-backend
+  template:
+    metadata:
+      labels:
+        app: clarify-backend
+    spec:
+      containers:
+        - name: clarify-api
+          image: clarify-api_web:latest
+          command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+          ports:
+          - containerPort: 8000
+          imagePullPolicy: Never

@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongo-container
+  template:
+    metadata:
+      labels:
+        app: mongo-container
+        tier: backend
+    spec:
+      containers:
+        - name: mongo-container
+          image: mongo:latest
+          # image: mongo:4.4-focal
+          imagePullPolicy: IfNotPresent
+
+          # securityContext:
+          #   runAsNonRoot: true
+
+          env:
+            # - name: MONGO_INITDB_ROOT_USERNAME
+            #   valueFrom:
+            #     secretKeyRef:
+            #       name: mongo-credentials
+            #       key: root-user
+
+            - name: MONGO_INITDB_ROOT_USERNAME
+              value: "admin"
+            
+            # - name: MONGO_INITDB_ROOT_PASSWORD
+            #   valueFrom:
+            #     secretKeyRef:
+            #       name: mongo-credentials
+            #       key: root-password
+
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              value: "password"
+
+            - name: ME_CONFIG_MONGODB_ENABLE_ADMIN
+              value: "true"
+
+            - name: MONGO_INITDB_DATABASE
+              value: kubernetes_django
+
+          ports:
+            - containerPort: 27017
+
+          volumeMounts:
+            - name: mongo-volume-mount
+              mountPath: /data/db
+          # volumeMounts:
+          #   - name: mongodb-configuration-file
+          #     mountPath: /etc/mongod.conf
+          #     readOnly: true
+
+          #   - name: mongo-volume-mount
+          #     mountPath: /data/db
+      volumes:
+        - name: mongo-volume-mount
+          persistentVolumeClaim:
+            claimName: mongo-pvc
+
+      # volumes:
+        # - name: mongodb-configuration-file
+        #   configMap:
+        #     name: mongodb-config-file
+
+      

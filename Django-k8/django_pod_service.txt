@@ -1,0 +1,17 @@
+Name:                     django-service
+Namespace:                default
+Labels:                   <none>
+Annotations:              <none>
+Selector:                 pod=django
+Type:                     NodePort
+IP Family Policy:         SingleStack
+IP Families:              IPv4
+IP:                       10.101.89.124
+IPs:                      10.101.89.124
+Port:                     <unset>  8000/TCP
+TargetPort:               8000/TCP
+NodePort:                 <unset>  30358/TCP
+Endpoints:                172.17.0.6:8000
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>

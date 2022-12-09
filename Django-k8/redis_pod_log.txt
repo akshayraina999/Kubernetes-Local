@@ -1,0 +1,55 @@
+Name:         redis-7d78884fbc-sgvgh
+Namespace:    default
+Priority:     0
+Node:         minikube/192.168.49.2
+Start Time:   Sat, 17 Sep 2022 23:02:58 +0530
+Labels:       pod=redis
+              pod-template-hash=7d78884fbc
+Annotations:  <none>
+Status:       Running
+IP:           172.17.0.3
+IPs:
+  IP:           172.17.0.3
+Controlled By:  ReplicaSet/redis-7d78884fbc
+Containers:
+  master:
+    Container ID:   docker://e349687bce6c4af31d2699ef7ce5fefc1d84d9f0f65fa32db9f4ecba602cc2cb
+    Image:          redis
+    Image ID:       docker-pullable://redis@sha256:091a7b5de688f283b30a4942280b64cf822bbdab0abfb2d2ce6db989f2d3c3f4
+    Port:           6379/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Sat, 17 Sep 2022 23:03:02 +0530
+    Ready:          True
+    Restart Count:  0
+    Requests:
+      cpu:        100m
+      memory:     100Mi
+    Environment:  <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-594zw (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             True 
+  ContainersReady   True 
+  PodScheduled      True 
+Volumes:
+  kube-api-access-594zw:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age    From               Message
+  ----    ------     ----   ----               -------
+  Normal  Scheduled  3m34s  default-scheduler  Successfully assigned default/redis-7d78884fbc-sgvgh to minikube
+  Normal  Pulling    3m33s  kubelet            Pulling image "redis"
+  Normal  Pulled     3m30s  kubelet            Successfully pulled image "redis" in 3.702184554s
+  Normal  Created    3m30s  kubelet            Created container master
+  Normal  Started    3m30s  kubelet            Started container master

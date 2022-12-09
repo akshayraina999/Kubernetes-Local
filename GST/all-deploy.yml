@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django
+  labels:
+    app: django
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: django
+  template:
+    metadata:
+      labels:
+        app: django
+    spec:
+      containers:
+      - name: django-kube
+        image: akshayraina/django_kube:v4
+        ports:
+        - containerPort: 8000
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo
+  labels:
+    app: mongo-container
+spec: 
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: mongo-container
+  template:
+    metadata:
+      labels:
+        app: mongo-container
+    spec: 
+      containers:
+      - name: mongo-container
+        image: mongo:5.0.12
+        ports:  
+        - containerPort: 27017
+        env:
+        - name:  MONGO_INITDB_ROOT_USERNAME
+          value: mongoadmin
+        - name: MONGO_INITDB_ROOT_PASSWORD
+          value: secret
+        - name: MONGO_INITDB_DATABASE
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name:  django
+spec:
+  selector:
+    app:  django
+  type:  LoadBalancer
+  ports:
+  - protocol: TCP
+    port:  8000
+    targetPort:  8000
+  # - name: mongo-container
+  #   port: 27017
+  #   targetPort: 27017

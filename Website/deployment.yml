@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: website
+  labels: 
+    app: website
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: website
+  template:
+    metadata:
+      labels:
+        app: website
+    spec:
+      containers:
+        - name: website
+          image: akshayraina/new_website:v2
+          imagePullPolicy: IfNotPresent
+          ports:
+          - containerPort: 80
+          

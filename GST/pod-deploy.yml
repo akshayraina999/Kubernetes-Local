@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: django-kube
+  labels:
+    name: django-kube
+    app: demo
+spec:
+  containers:
+    - name: django-kube
+      image: akshayraina/django_kube:v4
+      ports:
+        - containerPort: 8000
+          name: http
+          protocol: TCP

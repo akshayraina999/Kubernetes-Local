@@ -1,0 +1,55 @@
+Name:         django-5655586ccf-2p95x
+Namespace:    default
+Priority:     0
+Node:         minikube/192.168.49.2
+Start Time:   Sat, 17 Sep 2022 23:03:53 +0530
+Labels:       pod=django
+              pod-template-hash=5655586ccf
+Annotations:  <none>
+Status:       Running
+IP:           172.17.0.6
+IPs:
+  IP:           172.17.0.6
+Controlled By:  ReplicaSet/django-5655586ccf
+Containers:
+  django:
+    Container ID:   docker://dd18b99a77978468619350f9d3eb7a2cf07c7248a3bde080aab1cc96837cec22
+    Image:          akshayraina/django_kube:v9
+    Image ID:       docker-pullable://akshayraina/django_kube@sha256:229b4bb29c072eeeaa4afad912510ab3f5034cf9b16e9ff6b6c63bf9bc3b37df
+    Port:           8000/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Sat, 17 Sep 2022 23:03:54 +0530
+    Ready:          True
+    Restart Count:  0
+    Environment:
+      POSTGRES_USER:      <set to the key 'user' in secret 'postgres-credentials'>      Optional: false
+      POSTGRES_PASSWORD:  <set to the key 'password' in secret 'postgres-credentials'>  Optional: false
+      POSTGRES_HOST:      postgres-service
+      REDIS_HOST:         redis-service
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-xdx8p (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             True 
+  ContainersReady   True 
+  PodScheduled      True 
+Volumes:
+  kube-api-access-xdx8p:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age    From               Message
+  ----    ------     ----   ----               -------
+  Normal  Scheduled  2m15s  default-scheduler  Successfully assigned default/django-5655586ccf-2p95x to minikube
+  Normal  Pulled     2m14s  kubelet            Container image "akshayraina/django_kube:v9" already present on machine
+  Normal  Created    2m14s  kubelet            Created container django
+  Normal  Started    2m14s  kubelet            Started container django

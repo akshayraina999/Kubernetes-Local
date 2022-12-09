@@ -1,0 +1,15 @@
+Name:              postgres-service
+Namespace:         default
+Labels:            <none>
+Annotations:       <none>
+Selector:          app=postgres-container
+Type:              ClusterIP
+IP Family Policy:  SingleStack
+IP Families:       IPv4
+IP:                10.97.120.236
+IPs:               10.97.120.236
+Port:              <unset>  5432/TCP
+TargetPort:        5432/TCP
+Endpoints:         172.17.0.4:5432
+Session Affinity:  None
+Events:            <none>

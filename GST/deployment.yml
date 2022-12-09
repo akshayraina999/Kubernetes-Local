@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gst
+  labels:
+    app: gst-kube
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: gst-kube
+  template:
+    metadata:
+      labels:
+        app: gst-kube
+    spec:
+      containers:
+        - name: gst-kube
+          image: akshayraina/gst_img:latest
+          imagePullPolicy: IfNotPresent
+          ports: 
+          - containerPort: 8000

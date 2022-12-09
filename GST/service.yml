@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service 
+metadata:
+  name:  gst-service
+  labels: 
+    app: gst-service
+spec:
+  selector:
+    app: gst-kube
+  type: LoadBalancer
+  # type: NodePort
+  ports:
+    - name:  "http"
+      port: 8000
+      targetPort: 8000
+      # nodePort: 30002

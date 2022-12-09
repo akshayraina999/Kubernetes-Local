@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-database
+  labels:
+    name:  mongo-database
+    app: mongo-database
+spec:
+  selector:
+    app:  mongo-container
+  type:  NodePort
+  ports:
+  - name:  http
+    port:  27017
+    protocol: TCP

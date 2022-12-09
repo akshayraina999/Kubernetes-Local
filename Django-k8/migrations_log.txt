@@ -1,0 +1,62 @@
+Name:         django-migrations-lm52s
+Namespace:    default
+Priority:     0
+Node:         minikube/192.168.49.2
+Start Time:   Sat, 17 Sep 2022 23:03:49 +0530
+Labels:       controller-uid=73dd8f14-7253-4bfe-b597-fd7dc23ac22d
+              job-name=django-migrations
+Annotations:  <none>
+Status:       Succeeded
+IP:           172.17.0.5
+IPs:
+  IP:           172.17.0.5
+Controlled By:  Job/django-migrations
+Containers:
+  django:
+    Container ID:  docker://ad74cb71d295bb8acc3355e8dca4edc6967814edd23e6ad1d061744cd5d46502
+    Image:         registry.hub.docker.com/anjaneyulubatta505/django_app:latest
+    Image ID:      docker-pullable://registry.hub.docker.com/anjaneyulubatta505/django_app@sha256:b3bfba4b9840e66c8c9513cd86c5122ef0ab789d85482e91013039d163c16aa8
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      python
+      manage.py
+      migrate
+    State:          Terminated
+      Reason:       Completed
+      Exit Code:    0
+      Started:      Sat, 17 Sep 2022 23:03:58 +0530
+      Finished:     Sat, 17 Sep 2022 23:03:59 +0530
+    Ready:          False
+    Restart Count:  0
+    Environment:
+      POSTGRES_USER:      <set to the key 'user' in secret 'postgres-credentials'>      Optional: false
+      POSTGRES_PASSWORD:  <set to the key 'password' in secret 'postgres-credentials'>  Optional: false
+      POSTGRES_HOST:      postgres-service
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-lrg2f (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             False 
+  ContainersReady   False 
+  PodScheduled      True 
+Volumes:
+  kube-api-access-lrg2f:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  99s   default-scheduler  Successfully assigned default/django-migrations-lm52s to minikube
+  Normal  Pulling    98s   kubelet            Pulling image "registry.hub.docker.com/anjaneyulubatta505/django_app:latest"
+  Normal  Pulled     90s   kubelet            Successfully pulled image "registry.hub.docker.com/anjaneyulubatta505/django_app:latest" in 7.605902098s
+  Normal  Created    90s   kubelet            Created container django
+  Normal  Started    90s   kubelet            Started container django
